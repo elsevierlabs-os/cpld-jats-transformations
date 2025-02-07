@@ -106,22 +106,38 @@ def register_xslt_functions():
     return gb 
 
 
-def convert_from_file(filename, jats_path, jsonld_path, embed=True):
+def convert_from_file(filename, jats_path):
     gb = register_xslt_functions()
     print("====================================")
     dom = dom_from_file(filename)
     soup = BeautifulSoup(ET.tostring(dom, pretty_print=False), 'html.parser')
     print(soup.prettify())
 
-    # Find the script block with type 'application/ld+json'
+    # Find the script block with type 'application/ld+json' or else the link block with type 'application/ld+json'
+    # <script type="application/ld+json">...</script> (embedded JSON-LD)
+    # <link type="application/ld+json" rel="preload" href="..."/> (external JSON-LD)
     script_tag = soup.find('script', {'type': 'application/ld+json'})
+    link_tag = soup.find('link', {'type': 'application/ld+json'})
     if script_tag:
         jsonld = script_tag.string
         gb.g.parse(data=jsonld, format="json-ld")
-        print("JSON-LD found in the HTML file")
+        print("JSON-LD found embedded in the HTML file")
         print("-------------------------------------")
     else:
-        print("No JSON-LD found in the HTML file")
+        if link_tag:
+            jsonld_file = link_tag.get('href')
+            if jsonld_file:
+                response = requests.get(jsonld_file)
+                if response.status_code == 200:
+                    jsonld_data = json.loads(response.text)
+                    gb.g.parse(data=jsonld_data, format="json-ld")
+                    print("JSON-LD found in a external file linked in the HTML file")
+                else:
+                    jsonld_data = None
+                    print(f"Referenced file not found. (error {response.status_code})")
+            else:
+                jsonld_data = None
+                print("No JSON-LD found in the HTML file")
 
 
 
