@@ -1,0 +1,555 @@
+{
+  "@context": {
+    "brick": "https://brickschema.org/schema/Brick#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "doc": "https://data.example.com/publishing/pii/S1234123412345678#",
+    "doi": "http://dx.doi.org/",
+    "edm": "https://data.elsevier.com/schema/edm/",
+    "ex": "https://data.example.com/example/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "idtype": "https://data.elsevier.com/e/identifier/",
+    "nas": "https://data.elsevier.com/publishing/schema/nas/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "orcid": "https://orcid.org/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "rv": "https://data.elsevier.com/research/schema/rv/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "doc:work_Qz-_pU0EzbQq6A==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:idm5673288",
+      "@type": "nas:References"
+    },
+    {
+      "@id": "doc:rc3",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_E-t4atF9Rz6lJw=="
+      }
+    },
+    {
+      "@id": "doc:work_mor3TQX8zeo4Yg==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:work_QpHqWf8VpCyrwA==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:e912",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_whN4cNoI5tq-9A=="
+      }
+    },
+    {
+      "@id": "doc:e567",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_2HSOz1SGRLOfxw=="
+      }
+    },
+    {
+      "@id": "doc:e267",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_sgHM4cQevAFTJA=="
+      }
+    },
+    {
+      "@id": "doc:aut1",
+      "@type": "nas:AuthorName",
+      "schema:mentions": {
+        "@id": "doc:person_AQT-795_4fNheA=="
+      }
+    },
+    {
+      "@id": "doc:work_whN4cNoI5tq-9A==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:idp501472104",
+      "@type": "nas:Term"
+    },
+    {
+      "@id": "doc:aut2",
+      "@type": "nas:AuthorName",
+      "schema:mentions": {
+        "@id": "doc:person_hrvegqqWaH6KZw=="
+      }
+    },
+    {
+      "@id": "doc:e123",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_xeK7XtCU_QHeLA=="
+      }
+    },
+    {
+      "@id": "doc:",
+      "@type": "nas:Citation",
+      "owl:sameAs": [
+        {
+          "@id": "orcid:0000-0002-8912-4493"
+        },
+        {
+          "@id": "orcid:0000-0001-7076-9083"
+        },
+        {
+          "@id": "orcid:0000-0002-6046-2077"
+        }
+      ]
+    },
+    {
+      "@id": "doc:e789",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_-w756A7rjaPmCw=="
+      }
+    },
+    {
+      "@id": "doc:rkb",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_ofVd_MOsjarrzw=="
+      }
+    },
+    {
+      "@id": "doc:organization_MM_n1so84QkpNw==",
+      "@type": "schema:Organization",
+      "schema:name": "\n          "
+    },
+    {
+      "@id": "doc:work_C0cwNR2LTyti0w==",
+      "@type": "schema:Periodical",
+      "schema:issn": "0000-0000",
+      "schema:title": "Placeholder journal title"
+    },
+    {
+      "@id": "doc:work_ofVd_MOsjarrzw==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:s2",
+      "@type": "nas:Nomenclature"
+    },
+    {
+      "@id": "doc:work_MK7M5aMJpjv4eA==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:work_2HSOz1SGRLOfxw==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:aff-1",
+      "@type": "nas:AffiliationItem",
+      "schema:mentions": {
+        "@id": "doc:organization_MM_n1so84QkpNw=="
+      }
+    },
+    {
+      "@id": "doc:rg7",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_mor3TQX8zeo4Yg=="
+      }
+    },
+    {
+      "@id": "doc:idp501474504",
+      "@type": "nas:Term"
+    },
+    {
+      "@id": "doc:idp501472520",
+      "@type": "nas:Term"
+    },
+    {
+      "@id": "doc:e245",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_ofVd_MOsjarrzw=="
+      }
+    },
+    {
+      "@id": "doc:e345",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_E-t4atF9Rz6lJw=="
+      }
+    },
+    {
+      "@id": "doc:work_xeK7XtCU_QHeLA==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:idp501443592",
+      "@type": "nas:Byline"
+    },
+    {
+      "@id": "doc:rja",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_sgHM4cQevAFTJA=="
+      }
+    },
+    {
+      "@id": "doc:e256",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_sgHM4cQevAFTJA=="
+      }
+    },
+    {
+      "@id": "doc:e923",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_QpHqWf8VpCyrwA=="
+      }
+    },
+    {
+      "@id": "https://data.example.com/publishing/pii/S1234123412345678",
+      "@type": "schema:ScholarlyArticle",
+      "schema:datePublished": "2025-1-31",
+      "schema:hasPart": [
+        {
+          "@id": "doc:idp501443048"
+        },
+        {
+          "@id": "doc:aut3"
+        },
+        {
+          "@id": "doc:aut1"
+        },
+        {
+          "@id": "doc:aut2"
+        },
+        {
+          "@id": "doc:aff-1"
+        },
+        {
+          "@id": "doc:idp501443592"
+        },
+        {
+          "@id": "doc:idp501467416"
+        },
+        {
+          "@id": "doc:idp501471240"
+        },
+        {
+          "@id": "doc:idp501472104"
+        },
+        {
+          "@id": "doc:idp501472520"
+        },
+        {
+          "@id": "doc:idp501472904"
+        },
+        {
+          "@id": "doc:idp501473288"
+        },
+        {
+          "@id": "doc:idp501473672"
+        },
+        {
+          "@id": "doc:idp501474088"
+        },
+        {
+          "@id": "doc:idp501474504"
+        },
+        {
+          "@id": "doc:e123"
+        },
+        {
+          "@id": "doc:e234"
+        },
+        {
+          "@id": "doc:s1"
+        },
+        {
+          "@id": "doc:s2"
+        },
+        {
+          "@id": "doc:e923"
+        },
+        {
+          "@id": "doc:e345"
+        },
+        {
+          "@id": "doc:e456"
+        },
+        {
+          "@id": "doc:e245"
+        },
+        {
+          "@id": "doc:e789"
+        },
+        {
+          "@id": "doc:e890"
+        },
+        {
+          "@id": "doc:e901"
+        },
+        {
+          "@id": "doc:e256"
+        },
+        {
+          "@id": "doc:e567"
+        },
+        {
+          "@id": "doc:e267"
+        },
+        {
+          "@id": "doc:e912"
+        },
+        {
+          "@id": "doc:ra1"
+        },
+        {
+          "@id": "doc:rb2"
+        },
+        {
+          "@id": "doc:rc3"
+        },
+        {
+          "@id": "doc:rd4"
+        },
+        {
+          "@id": "doc:re5"
+        },
+        {
+          "@id": "doc:rf6"
+        },
+        {
+          "@id": "doc:rg7"
+        },
+        {
+          "@id": "doc:rh8"
+        },
+        {
+          "@id": "doc:ri9"
+        },
+        {
+          "@id": "doc:rja"
+        },
+        {
+          "@id": "doc:rkb"
+        },
+        {
+          "@id": "doc:rlc"
+        },
+        {
+          "@id": "doc:idm5673288"
+        }
+      ],
+      "schema:partOf": {
+        "@id": "doc:work_C0cwNR2LTyti0w=="
+      },
+      "schema:title": "Roundtripping CP/LD and JATS"
+    },
+    {
+      "@id": "doc:s1",
+      "@type": "nas:Introduction"
+    },
+    {
+      "@id": "doc:ra1",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_xeK7XtCU_QHeLA=="
+      }
+    },
+    {
+      "@id": "doc:work_-w756A7rjaPmCw==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:person_AQT-795_4fNheA==",
+      "@type": "schema:Person",
+      "schema:affiliation": {
+        "@id": "doc:organization_MM_n1so84QkpNw=="
+      },
+      "schema:familyName": "Hoekstra",
+      "schema:givenName": "Rinke"
+    },
+    {
+      "@id": "doc:aut3",
+      "@type": "nas:AuthorName",
+      "schema:mentions": {
+        "@id": "doc:person_NSedMJapGko7kw=="
+      }
+    },
+    {
+      "@id": "doc:work_sgHM4cQevAFTJA==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:idp501474088",
+      "@type": "nas:Term"
+    },
+    {
+      "@id": "doc:work_LK3Tj-Po6wgF1A==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:re5",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_2HSOz1SGRLOfxw=="
+      }
+    },
+    {
+      "@id": "doc:rlc",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_QpHqWf8VpCyrwA=="
+      }
+    },
+    {
+      "@id": "doc:work_E-t4atF9Rz6lJw==",
+      "@type": "schema:CreativeWork",
+      "schema:label": "test"
+    },
+    {
+      "@id": "doc:idp501467416",
+      "@type": "nas:Abstract"
+    },
+    {
+      "@id": "doc:person_hrvegqqWaH6KZw==",
+      "@type": "schema:Person",
+      "schema:affiliation": {
+        "@id": "doc:organization_MM_n1so84QkpNw=="
+      },
+      "schema:familyName": "O'Connor",
+      "schema:givenName": "Charles"
+    },
+    {
+      "@id": "doc:rb2",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_Qz-_pU0EzbQq6A=="
+      }
+    },
+    {
+      "@id": "doc:e456",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_MK7M5aMJpjv4eA=="
+      }
+    },
+    {
+      "@id": "doc:rd4",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_MK7M5aMJpjv4eA=="
+      }
+    },
+    {
+      "@id": "doc:idp501443048",
+      "@type": "nas:Title"
+    },
+    {
+      "@id": "doc:idp501473288",
+      "@type": "nas:Term"
+    },
+    {
+      "@id": "doc:idp501471240",
+      "@type": "nas:Keywords"
+    },
+    {
+      "@id": "doc:e890",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_mor3TQX8zeo4Yg=="
+      }
+    },
+    {
+      "@id": "doc:e234",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_Qz-_pU0EzbQq6A=="
+      }
+    },
+    {
+      "@id": "doc:person_NSedMJapGko7kw==",
+      "@type": "schema:Person",
+      "schema:affiliation": {
+        "@id": "doc:organization_MM_n1so84QkpNw=="
+      },
+      "schema:familyName": "Schouten",
+      "schema:givenName": "Edgar"
+    },
+    {
+      "@id": "doc:rf6",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_-w756A7rjaPmCw=="
+      }
+    },
+    {
+      "@id": "doc:idp501473672",
+      "@type": "nas:Term"
+    },
+    {
+      "@id": "doc:rh8",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_LK3Tj-Po6wgF1A=="
+      }
+    },
+    {
+      "@id": "doc:e901",
+      "@type": "nas:Citation",
+      "schema:mentions": {
+        "@id": "doc:work_LK3Tj-Po6wgF1A=="
+      }
+    },
+    {
+      "@id": "doc:ri9",
+      "@type": "nas:ReferenceItem",
+      "schema:mentions": {
+        "@id": "doc:work_whN4cNoI5tq-9A=="
+      }
+    },
+    {
+      "@id": "doc:idp501472904",
+      "@type": "nas:Term"
+    }
+  ],
+  "@id": "https://data.example.com/publishing/pii/S1234123412345678"
+}
