@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with MathML3 v1.1 20151215//EN" "JATS-journalpublishing1-mathml3">
+<article dtd-version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="en"
+  xmlns:mml="http://www.w3.org/1998/Math/MathML">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher">123456789</journal-id>
+      <journal-title-group>
+        <journal-title>Placeholder journal title</journal-title>
+      </journal-title-group>
+      <issn>0000-0000</issn>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">S1234123412345678</article-id>
+      <title-group>
+        <article-title>Roundtripping CP/LD and JATS</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib id="aut3" contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0002-8912-4493</contrib-id>
+          <name>
+            <surname>Schouten</surname>
+            <given-names>Edgar</given-names>
+          </name>
+          <role> Author (original draft) 
+            <named-content content-type="RDF subject">&lt;https://orcid.org/0000-0001-7076-9083&gt;
+              <named-content content-type="RDF predicate">&lt;https://data.example.com/example/hasRole&gt;
+                <named-content content-type="RDF object">&lt;https://credit.niso.org/contributor-roles/writing-original-draft/&gt;</named-content>
+              </named-content>
+            </named-content>
+          </role>
+          <xref id="e765" ref-type="aff" rid="aff-1">1</xref>
+        </contrib>
+        <contrib id="aut1" contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0001-7076-9083</contrib-id>
+          <name>
+            <surname>Hoekstra</surname>
+            <given-names>Rinke</given-names>
+          </name>
+          <role>Author (original draft) 
+            <named-content content-type="RDF subject">&lt;https://orcid.org/0000-0001-7076-9083&gt;
+              <named-content content-type="RDF predicate">&lt;https://data.example.com/example/hasRole&gt;
+                <named-content content-type="RDF object">&lt;https://credit.niso.org/contributor-roles/writing-original-draft/&gt;</named-content>
+              </named-content>
+            </named-content>
+          </role>
+          <xref id="e987" ref-type="aff" rid="aff-1">1</xref>
+        </contrib>
+        <contrib id="aut2" contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0002-6046-2077</contrib-id>
+          <name>
+            <surname>O'Connor</surname>
+            <given-names>Charles</given-names>
+          </name>
+          <role>Author (review &amp; editing) 
+            <named-content content-type="RDF subject">&lt;https://orcid.org/0000-0002-6046-2077&gt;
+              <named-content content-type="RDF predicate">&lt;https://data.example.com/example/hasRole&gt;
+                <named-content content-type="RDF object">&lt;https://credit.niso.org/contributor-roles/writing-review-editing/&gt;</named-content>
+              </named-content>
+            </named-content>
+          </role>
+          <xref id="e876" ref-type="aff" rid="aff-1">1</xref>
+        </contrib>
+        <aff id="aff-1">
+          <institution-wrap>
+            <institution content-type="corporate">Elsevier</institution>
+            <institution-id institution-id-type="Ringgold">1216</institution-id>
+            <institution-id institution-id-type="ISNI">0000 0001 0672 9757</institution-id>
+          </institution-wrap>
+        </aff>
+      </contrib-group>
+      
+      <pub-date>
+        <day>31</day>
+        <month>1</month>
+        <year>2025</year>
+      </pub-date>
+      <abstract>
+        <title>Abstract</title>
+        <p> We describe a method for roundtripping between two NISO/ANSI data serialisation formats
+          for scholarly content. We are transforming XML documents conforming to JATS (Z39.96)
+          Article Authoring DTD to a Linked Document conforming to a Content Profile based on the
+          CP/LD-standard (Z39.96-2015). The two data serialisation formats run on different
+          philosophies. The Tag Library of JATS has a collection of 256 elements, some with a very
+          specific semantic, such as <monospace>ack</monospace>, <monospace>conf-loc</monospace>,
+            <monospace>collab-name-alternatives</monospace>. The Linked Documents keeps the
+          narrative in a lighter HTML structure and offloads the semantics of the serialisation to a
+          linked-data graph that is referenced from the HTML. This creates a couple of challanges
+          for the transformation, related to the the question: what goes where? </p>
+        <p> We present a Linked Document that expresses the equivalent to its JATS-structured
+          counterpart, and the transformations that were used to create one from the other. </p>
+      </abstract>
+      <kwd-group kwd-group-type="author">
+        <title>Keywords</title>
+        <kwd>Data serialization format</kwd>
+        <kwd>HTML</kwd>
+        <kwd>JSON-LD</kwd>
+        <kwd>Markup</kwd>
+        <kwd>ANSI/NISO Z39.105-2023</kwd>
+        <kwd>ANSI/NISO Z39.96-2015</kwd>
+        <kwd>XML</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="s1" sec-type="intro">
+      <title>Introduction</title>
+      <p> JATS<xref id="e123" ref-type="bibr" rid="ra1">1</xref> has been a NISO standard for over a
+        decade. CP/LD<xref id="e234" ref-type="bibr" rid="rb2">2</xref> has been added to the NISO
+        standards in 2023. Both are data serialisation formats for the interchange of academic
+        content. It would only be natural for the two NISO standards to have a standardized
+        transformation from one to the other </p>
+    </sec>
+    <sec id="s2" sec-type="nomenclature">
+      <title>Nomenclature</title>
+      <def-list>
+        <title>Terms used in this document</title>
+        <def-item>
+          <term>Attribute</term>
+          <def>
+            <p>An attribute is a property of an entity that describes, qualifies or identifies an
+              entity.</p>
+            <p>In HTML/XML, an attribute is markup that can be used to further describe, qualify or
+              identify an HTML/XML element.</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>Class</term>
+          <def>
+            <p>A Class is a used to group things according some classification. A class is an
+              instance of the class <monospace>&lt;rdfs:Class&gt;</monospace>. For example:
+                <monospace>&lt;schema:Person&gt;</monospace>.</p>
+            <p>In HTML, a class is a attribute used to specify the class of a HTML element (often
+              used to style or manipulate elements with that class).</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>Content Profile</term>
+          <def>
+            <p>A Content Profile is a definition of some content type, e.g. a journal article, a
+              book, etc., and specifies the requirements for Linked Documents of that content
+              type.</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>Datatype Property</term>
+          <def>
+            <p>An datatype property is a property that relates a thing to an associated value. For
+              example: <monospace>&lt;schema:name&gt;</monospace>.</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>Entity</term>
+          <def>
+            <p>An entity is a thing that is distinct and can be uniquely identified by a URI. An
+              entity can represent real world things (like a person, a city), conceptual things
+              (like a class, a property) and relationships (like ownership, friendship)</p>
+            <p>In HTML, an entity is also used to for a character reference constructed by an escape
+              sequence of characters to represent another (Like <monospace>&amp;#x3C;</monospace>
+              representing a <monospace>&#x3C;</monospace></p>
+            <p>In XML, an entity may refer to a character entity, an document-internally declared
+              entity in the <monospace>&lt;!DOCTYPE</monospace> declaration, or an externally
+              referenced resource using the <monospace>SYSTEM</monospace> keyword and a path or URL
+              to that resource.</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>Entity Type</term>
+          <def>
+            <p>An Entity Type is class of entities that share a common set of attributes such as
+                <monospace>&lt;schema:Person&gt;</monospace>,
+                <monospace>&lt;schema:Organization&gt;</monospace>.</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>Linked Data</term>
+          <def>
+            <p>Linked Data is a set of best practices for publishing and connecting structured (and
+              machine-readable) data, using URI's as identifier for entities.</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>Linked Document</term>
+          <def>
+            <p>A Linked Document is a collection of multiple files (HTML, JSON (and optionally other
+              referenced media)) that represent some coherent content and conforms to a Content
+              Profile and the CP/LD Standard.</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>Narrative structure annotation</term>
+          <def>
+            <p>A narrative structure annotation is a relation between a Linked Document fragment and
+              a typing of that fragment from a controlled vocabulary.</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>Object Property</term>
+          <def>
+            <p>An object property is a property that relates one thing to another. For example:
+                <monospace>&lt;schema:author&gt;</monospace> (relating a instance of a
+                <monospace>&lt;schema:Person></monospace> to an instance of a
+                <monospace>&lt;schema:ScholarlyArticle></monospace>)</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>Property</term>
+          <def>
+            <p>A property describes a relation between a thing and an associated value or a relation
+              between two things. A property is an instance of the class
+                <monospace>&lt;rdfs:Property&gt;</monospace>.</p>
+          </def>
+        </def-item>
+      </def-list>
+    </sec>
+    <sec id="s3">
+      <title>Comparison</title>
+      <p> XML elements are added to JATS where needed (by the JATS Standing Committee<xref id="e923"
+          ref-type="bibr" rid="rlc">12</xref>) to add specific semantics. CP/LD doesn't use the
+        HTML, but entity types and properties from schema's, such as
+          <monospace>schema.org</monospace> to capture semantics.</p>
+      <p>Example: <monospace>&lt;principal-investigator&gt;</monospace> and
+          <monospace>&lt;principal-award-recipient&gt;</monospace>
+      </p>
+      <p>In JATS these are two elements describing the role of an organization or an individual with
+        respect to a grant that was awarded by another organisation to fund a research activity. In
+        CP/LD, the document fragments (like a <monospace>&lt;span&gt;</monospace>) carrying the
+        names of the <monospace>schema:Organization</monospace> or
+          <monospace>schema:Person</monospace>, or <monospace>schema:Grant</monospace> in the text
+        would be associated with entities that have properties describing their relationships. </p>
+      <table-wrap>
+        <label>Table 1</label>
+        <caption>
+          <title>Side by side</title>
+        </caption>
+        <table>
+          <tbody>
+            <tr>
+              <th>property</th>
+              <th>JATS</th>
+              <th>CP/LD</th>
+            </tr>
+            <tr>
+              <td>version</td>
+              <td>1.4</td>
+              <td>1.0</td>
+            </tr>
+            <tr>
+              <td>date</td>
+              <td>2024-10-31</td>
+              <td>2023-12-12</td>
+            </tr>
+            <tr>
+              <td>standard</td>
+              <td><ext-link
+                  xlink:href="https://groups.niso.org/higherlogic/ws/public/download/31415/ANSI-NISO-z39.96-2024.pdf"
+                  >ANSI-NISO-z39.96-2024.pdf</ext-link></td>
+              <td><ext-link
+                  xlink:href="https://groups.niso.org/higherlogic/ws/public/download/29975/ANSI-NISO-Z39.105-2023_CPLD.pdf"
+                  >ANSI-NISO-Z39.105-2023_CPLD.pdf</ext-link></td>
+            </tr>
+            <tr>
+              <td>underpinning standards</td>
+              <td><ext-link xlink:href="https://www.w3.org/TR/xml11/">Extensible Markup Language
+                  (XML) 1.1 (Second Edition)</ext-link></td>
+              <td>
+                <ext-link ext-link-type="uri" xlink:href="https://html.spec.whatwg.org/">HTML Living
+                  Standard</ext-link>
+                <ext-link ext-link-type="uri" xlink:href="https://www.w3.org/TR/json-ld/">JSON-LD
+                  1.1</ext-link>
+              </td>
+            </tr>
+            <tr>
+              <td>Number of elements</td>
+              <td>311</td>
+              <td>&#x00B1;110 in HTML</td>
+            </tr>
+            <tr>
+              <td>Number of attributes</td>
+              <td>178</td>
+              <td>173<xref ref-type="table-fn" rid="t1fn1">(1)</xref> in HTML, 811 Types, 1485
+                Properties 14 Datatypes, 89 Enumerations and 499 Enumeration members. in
+                schema.org</td>
+            </tr>
+            <tr>
+              <td>Internal linking</td>
+              <td><monospace>id</monospace>-attribute and linking attributes
+                  <monospace>rid</monospace></td>
+              <td><monospace>id</monospace>-attribute and <monospace>href</monospace>-attribute on
+                element <monospace>&lt;a></monospace></td>
+            </tr>
+            <tr>
+              <td>Narrative structures</td>
+              <td>Dedicated elements such as <monospace>&lt;abstract>,</monospace>
+                <monospace>&lt;ack></monospace></td>
+              <td>Generic elements such as <monospace>&lt;section></monospace> and<monospace>
+                  &lt;div></monospace> that are typed as an instance of a class from a controlled
+                vocabulary</td>
+            </tr>
+            <tr>
+              <td>Entity representation</td>
+              <td>Dedicated elements such as <monospace>&lt;contrib-id&gt;</monospace> with
+                identifier types such as <monospace>@contrib-id-type</monospace> (and
+                  <monospace>&lt;pub-id></monospace> with <monospace>@pub-id-type</monospace>) as
+                part of the XML fragment</td>
+              <td>Entities, relations and properties are treated genericly using a graph
+                representation serialized as JSON-LD. Linking between entities and where the are
+                mentioned in the HTML is done through the document fragment identifier</td>
+            </tr>
+          </tbody>
+        </table>
+        <table-wrap-foot>
+          <fn-group>
+            <fn id="t1fn1">
+              <p>Excluding event handler content attributes</p>
+            </fn>
+          </fn-group>
+        </table-wrap-foot>
+      </table-wrap>
+    </sec>
+    <sec id="s4">
+      <title> From JATS to CP/LD </title>
+      <p>Going from JATS-xml to HTML has been in existence for a long time. In particular as part of
+        the JATSKit <xref id="e345" ref-type="bibr" rid="rc3">3</xref> (mainly) developed by Wendell
+        Piez. Converting from JATS-xml to Linked Document differs from this conversion. Not only do
+        the specific JATS-elements need to be mapped to a HTML pattern that is supported or
+        recommended by the WHATWG<xref id="e456" ref-type="bibr" rid="rd4">4</xref> in the HTML
+        Standard, but the entities that are mentioned in the JATS document need to be added to a
+        graph and the semantics of the elements and attributes need to be captured if there is not
+        equivalent HTML-element. Examples of JATS-elements that: </p>
+      <list>
+        <list-item>
+          <p>do have a HTML-equivalent are <monospace>&lt;sec&gt;</monospace> and
+              <monospace>&lt;p&gt;</monospace></p>
+        </list-item>
+        <list-item>
+          <p>do <italic>not</italic> have a HTML-equivalent are
+              <monospace>&lt;answer&gt;</monospace> and <monospace>&lt;abstract&gt;</monospace></p>
+        </list-item>
+        <list-item>
+          <p>mention an entity are <monospace>&lt;funding-source&gt;</monospace> and
+              <monospace>&lt;publisher&gt;</monospace>.</p>
+        </list-item>
+      </list>
+      <p> When processing a JAT-xml file using XSLT, this means that in some templates a straight
+        forward mapping can be used, in other templates a combination of HTML-conversion with
+        additions to a graph describing entities or annotations about the narritive structure. </p>
+      <p>The easist way to annotate a document fragment from a HTML file, is to refer to it by its
+        document fragment identifier<xref id="e245" ref-type="bibr" rid="rkb">11</xref>. The
+          <monospace>&lt;id&gt;</monospace> attribute is a unique identifier for an element within a
+        HTML file. JATS also uses (optionally) the <monospace>&lt;id&gt;</monospace> attribute to
+        unique identify an element within a document. During transformation, we use the value from
+        the JATS <monospace>&lt;id&gt;</monospace> attribute, if present, for the
+          <monospace>&lt;id&gt;</monospace> attribute in HTML . If an JATS-element has no value for
+        the <monospace>&lt;id&gt;</monospace> attribute, a new value is generated using the
+          <monospace>&lt;generate-id()&gt;</monospace> function. This logic is captured in a
+        template named <monospace>produce_id</monospace>
+      </p>
+      <p> Example transforming JATS <monospace>&lt;list-item&gt;</monospace> to HTML
+          <monospace>&lt;li&gt;</monospace>
+      </p>
+      <code code-type="xml" language="xslt">
+&lt;xsl:template match="list-item&gt;
+  &lt;xsl:variable name="id"&gt;&lt;xsl:call-template name="produce_id"/&gt;&lt;/xsl:variable&gt;
+  &lt;li id="{$id}"&gt;
+    &lt;xsl:apply-templates/&gt;
+  &lt;/li&gt;
+&lt;/xsl:template&gt;
+      </code>
+      <p> The creation of a graph during the traversal of the JATS XML is incorporated in the
+        template rules. </p>
+      <p> In the template matching <monospace>jats:article</monospace>, a entity is created that
+        represents the article itself, as an instance of class
+        <monospace>schema:Article</monospace>. This entity has a property
+          <monospace>schema:title</monospace>, that is given a value taken from
+          <monospace>jats:article-title</monospace>
+      </p>
+      <p> In the template matching <monospace>jats:contrib</monospace>, a entity is created that
+        represents the person that contributed to the article, as an instance of class
+          <monospace>schema:Person</monospace>. This entity has a property
+          <monospace>schema:familyName</monospace>, that is given a value taken from
+          <monospace>jats:surname</monospace>. </p>
+      <p> It is the library "RDFlib"<xref id="e789" ref-type="bibr" rid="rf6">6</xref> that handles
+        the creation of the graph and the creation of the entities and their properties. The python
+        script defines graph functions that can be invoked from the transformation stylesheet </p>
+      <code code-type="xml" language="xslt">
+&lt;xsl:value-of select=&quot;f:add_relation(f:get_document_iri(),'rdf:type','schema:ScholarlyArticle')&quot;/&gt;   
+&lt;xsl:value-of select=&quot;f:add_attribute(f:get_document_iri(),'schema:title',string(article-meta/title-group/article-title))&quot;/&gt;
+      </code>
+      <p> The function <monospace>add_relation</monospace> creates a relation in the graph between
+        two entities. In the example above between the document itself and the class
+          <monospace>schema:ScholarlyArticle</monospace>. The function
+          <monospace>add_attribute</monospace> creates a value for a property of an entity. In the
+        example above the character string of the title is associted with the document through the
+        property <monospace>schema:title</monospace>. </p>
+      <p> Because JATS does not come with a graph, there is no distinction between the document
+        fragment that mentions an entity and a representation of that entity. When converting to
+        CP/LD, a graph is created with entities and relations between them. An IRI<xref id="e890"
+          ref-type="bibr" rid="rg7">7</xref> to identify the entifty is creating by concatenating
+        the IRI of the document, a "#", the type of the entity and the calculated hash of the
+        identifier of the fragment. For the calculation of the hash, a number of algorithm can be
+        used. The samples are based on a python library "hashlib"<xref id="e901" ref-type="bibr"
+          rid="rh8">8</xref>
+      </p>
+      <p>For Example:</p>
+
+      <code code-type="html" language="cpld">
+&lt;li id="idp641439768"&gt;
+  &lt;span&gt;O'Connor&lt;/span&gt; &lt;span&gt;Charles&lt;/span&gt; Author (review &amp; editing) &lt;a id="e876" href="#aff-1"&gt;1&lt;/a&gt;
+&lt;/li&gt;
+      </code>
+
+      <p>is a HTML-snippet from the byline of the article.</p>
+
+      <code code-type="json-ld" language="cpld">
+{
+  "@id": "doc:idp641439768",
+  "@type": "nas:AuthorName",
+  "schema:mentions": {
+  "@id": "doc:person_JPdehcBjMqjnIg=="
+}
+      </code>
+
+      <p> is how the document fragment is related to a Person, also part of the graph </p>
+
+      <code code-type="json-ld" language="cpld">
+{
+  "@id": "doc:person_JPdehcBjMqjnIg==",
+  "@type": "schema:Person",
+  "schema:affiliation": {
+    "@id": "doc:organization_MM_n1so84QkpNw=="
+  },
+  "schema:familyName": "O'Connor",
+  "schema:givenName": "Charles"
+}
+      </code>
+
+      <p> Notice the relationship of the person with some organization, that has is represented by
+        its own entity. </p>
+
+      <fig fig-type="graph">
+        <caption>
+          <p> A visualisation of the graph that represents the article </p>
+        </caption>
+        <alt-text>image of nodes and edges on a graph</alt-text>
+        <graphic xlink:href="graph_pii_S1234123412345678v2.png"/>
+      </fig>
+      <p>
+        The degree of completness of a JATS to CP/LD transformation depends not only on how much of the JATS specification is handled by the transormation templates.
+        There are multiple ways of capturing content in JATS. Sometimes a templates makes assumptions about what is provided as a best practise.
+        It would not be possible to cater for all exceptions and deviations.
+        In practise, not all documents that are valid JATS XML files, might transform to the equivalant serialization in CP/LD as expected.
+        The close the original sticks to JATS common tagging practices, the better and more predictable the result will be.
+      </p>
+      <p>An intial conversion using XSLT and a light-weight python script to transform from JATS to CP/LD will be open sourced by
+        Elsevier<xref id="e256" ref-type="bibr" rid="rja"></xref></p>
+    </sec>
+    <sec id="s5">
+      <title>From CP/LD to JATS</title>
+      <p> The challenge in going from CP/LD to JATS, is to find a way to describe in a JATS-pattern
+        — using elements and attributes — the content from the HTML blocks combined with the the
+        metadata stored in the associated graph. In order to combine HTML with the Linked Data in
+        the graph, the transformation logic needs to be able to access both. This can be done in several ways.
+      </p>
+      <p>One possibility is to turn the graph into XML by converting the JSON using the <monospace>json-to-xml</monospace> function in XSLT
+          3.0<xref id="e567" ref-type="bibr" rid="re5">5</xref>. For example:
+      </p>
+      <code code-type="json" language="json-ld">
+{
+  "schema:author": [{
+    "@id": "https://data.example.com/person-192837",
+    "schema:givenName": "Doublas",
+    "schema:familyName": "Adams"
+  }]
+}
+      </code>
+
+      <p>is transformed to:</p>
+
+      <code code-type="xml">
+&lt;map&gt;
+  &lt;array key="schema:author"&gt;
+    &lt;map&gt;
+      &lt;string key="@id"&gt;https://data.example.com/person-192837&lt;/string&gt;
+      &lt;string key="schema:givenName"&gt;Douglas&lt;/string&gt;
+      &lt;string key="schema:familyName"&gt;Adams&lt;/string&gt;
+    &lt;/map&gt;
+  &lt;/array&gt;
+&lt;/map&gt;
+      </code>
+      <p> The problem with this approach is that the match-patterns for maps and arrays aren't very
+        expressive and that when selecting data, you have to cater for properties that may have a
+        single value and may have an array of values. </p>
+      <p> A better approach is to embed the logic in the XSLT-templates and to query the graph when
+        applying the templates. Using RDFlib again, it is possible to loop over the entities of type
+          <monospace>schema:Person</monospace>
+      </p>
+      <code code-type="script" language="python">
+for value in g.objects(subject=URIRef("https://data.example.com/person-192837"),predicate=URIRef("schema:givenName")):
+      </code>
+      <p> For elaborate queries, a SPARQL-query can be constructed to get some specific information
+        that is needed in some template (like all surnames from persons that are affilated with any
+        organization)</p>
+      <code code-type="script" language="SPARQL">
+SELECT 
+  distinct ?familyname
+WHERE {
+  ?person rdf:type schema:Person .  
+  ?article schema:author ?person .
+  ?person schema:affilation ?organization .
+  ?organization rdf:type schema:Organization .
+  ?person schema:familyName ?familyname
+      </code>
+      <p> As with the functions that created the graph, retrieving information through the return
+        value of the functions can be accomplished in the python script. 
+      </p>
+        
+      <code>
+&lt;xsl:value-of select=&quot;f:get_property_value(f:entity_iri, property_iri)&quot;/&gt;
+      </code>
+      
+      <p> Which would return "O'connor" from the graph, given the iri
+          "<monospace>doc:person_JPdehcBjMqjnIg==</monospace>" for the entity and
+          "<monospace>schema:familyName</monospace>" for the property. </p>
+      <p>
+        Since HTML has fewer semantic elements, the matching templates must look in the graph for any more descriptive or more specific qualifications of the content to enable mapping to the expected JATS pattern.
+        </p>
+      <p>
+        For example:
+      </p>
+
+      <list>
+        <list-item>
+          <p>
+            <monospace>bibr</monospace> is a specific value for attribute
+              <monospace>ref-type</monospace> on element <monospace>ref</monospace> to specify that
+            the reference is a bibliographical reference. </p>
+          <p> A html element <monospace>a</monospace> can be checked for a annotated type as a
+              <monospace>nas:Citation</monospace> to determine if the
+              <monospace>ref-type</monospace> can be captured accordingly. </p>
+
+        </list-item>
+        <list-item>
+          <p>
+            <monospace>intro</monospace> is a specific value for attribute
+              <monospace>sec-type</monospace> on element <monospace>sec</monospace> to specify that
+            the section is a introductory section. </p>
+          <p> An html element <monospace>section</monospace> can be checked for a annotated type as
+            a <monospace>nas:Introduction</monospace> to determine if the
+              <monospace>sec-type</monospace> can be captured accordingly. </p>
+        </list-item>
+      </list>
+      <p> 
+      </p>
+      <code>
+&lt;xsl:value-of select=&quot;f:get_property_value(f:entity_iri, property_iri)&quot;/&gt;
+      </code>
+      <p> Which would return "nas:Introduction" from the graph, given the iri
+        "<monospace>doc:s1</monospace>" for the document fragment and
+        "<monospace>rdf:type</monospace>" for the property, as in the example below.
+      </p>
+      <code>
+{
+  "@id": "doc:s1",
+  "@type": "nas:Introduction"
+}
+      </code>
+      <p>This can be applied to all cases where  information from the graph is needed.</p>
+      <p>In the case where we need properties of an entity that is mentioned in the HTML, the
+        identifier of the mentioned entity must be found first by supplying the document fragment
+        identifier (like "<monospace>doc:aut1</monospace>") and the property
+          "<monospace>schema:mentions</monospace>" to the function
+          <monospace>get_property_value</monospace></p>
+      <p>For some statements in the graph about the article (or the journal that the article is a
+        part of), that can't be mapped to regular JATS elements, there is a possibility to capture
+        those statements using the <monospace>&lt;custom-meta-group&gt;</monospace> element. </p>
+      <p>For arbitrary RDF tripples, JATS provides guidance on how to use the element
+          <monospace>&lt;named-content></monospace><code>&lt;named-content content-type="RDF subject">&amp;lt;doc:person_JPdehcBjMqjnIg==&amp;gt;
+  &lt;named-content content-type="RDF predicate">&amp;lt;http://schema.org/familyName&amp;gt;
+    &lt;named-content content-type="RDF object">"O'connor"&lt;/named-content>
+  &lt;/named-content>
+&lt;/named-content></code></p>
+      <p>The author-view would present this as:</p>
+      <p>
+        <named-content content-type="RDF subject">&lt;doc:person_JPdehcBjMqjnIg==&gt; <named-content
+            content-type="RDF predicate">&lt;http://schema.org/familyName&gt; <named-content
+              content-type="RDF object">"O'connor"</named-content>
+          </named-content>
+        </named-content>
+      </p>
+      <p>As the <monospace>&lt;custom-meta-group&gt;</monospace> is limited to the
+          <monospace>&lt;article-meta&gt;</monospace> and
+          <monospace>&lt;journal-meta&gt;</monospace> and the
+          <monospace>&lt;named-content></monospace>-construction has some of the same draw-backs as
+        the XML representation of a graph in a
+          <monospace>&lt;map></monospace>/<monospace>&lt;array></monospace>/<monospace>&lt;string></monospace>-ouput
+        of <monospace>json-to-xml</monospace>-function, this has not been explored further. </p>
+      <p/>
+      <p>
+        An intial conversion using XSLT and a light-weight python script to transform from CP/LD to JATS will be open sourced by
+          Elsevier<xref id="e267" ref-type="bibr" rid="rja"></xref>
+      </p>
+    </sec>
+    <sec id="s6">
+      <title>Going forward</title>
+      <p>Being able to properly visualize marked-up content is very important. Viewing HTML
+        documents is possible in numerous implementations. Apart from internet-browsers, there is
+        notably Visual Studio Code and Oxygen XML editor, that allow for both editing and
+        viewing.</p>
+      <p> In the Oxygen editor, JATS-XML content can be rendered in the Author-view, that uses
+        styling and formatting to increase human readabilty.</p>
+      <p>
+        <fig fig-type="screenshot">
+          <caption>
+            <p> A screenshot from the Oxygen XML editor of the JATS-XML content </p>
+          </caption>
+          <alt-text>image of how the text of the XML-article is presented in author-mode</alt-text>
+          <graphic xlink:href="author-view-jats_pii_S1234123412345678.png"/>
+        </fig>
+      </p>
+      <p> After conversion to CP/LD the Oxygen XML editor can (unsurprisingly) be used to view the
+        HTML in Author-mode. The HTML contains the text, the hierarchy and the internal references
+        of the original XML. The <monospace>&lt;script
+        type="application/ld+json"&gt;</monospace>-block is left verbatim at the top. </p>
+      <p>
+        <fig fig-type="screenshot">
+          <caption>
+            <p> A screenshot from the Oxygen XML editor of the HTML content </p>
+          </caption>
+          <alt-text>image of how the text of the HTML-article is presented in author-mode</alt-text>
+          <graphic xlink:href="author-view-html_pii_S1234123412345678.png"/>
+        </fig>
+      </p>
+      <p> A plugin for the Visual Studio, named "CP/LD Viewer"<xref id="e912" ref-type="bibr"
+          rid="ri9">9</xref>, created by Rinke Hoestra shows a rendition of the HTML alongside a
+        renditon of the graph. </p>
+      <p>
+        <fig fig-type="screenshot">
+          <caption>
+            <p> A screenshot from the Visual Studio Code editor using the CP/LD viewer on the HTML+JSON-LD. </p>
+          </caption>
+          <alt-text>image of how the text and the graph of the CP/LD-article is presented in visual
+            studio code</alt-text>
+          <graphic xlink:href="vs-graph-view_pii_S1234123412345678.png"/>
+        </fig>
+      </p>
+      <p>It would be interesting to see if the Oxygen XML editor also would be able to connect the
+        data from the <monospace>&lt;script type="application/ld+json"&gt;</monospace>-block of a
+        document visually with the content from the document.
+      </p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <title>References</title>
+      <ref id="ra1">
+        <label>1</label>
+        <mixed-citation>
+          <article-title>Article Authoring Tag Library NISO JATS Version 1.1 (ANSI/NISO
+            Z39.96-2015)</article-title>
+          <uri>https://jats.nlm.nih.gov/articleauthoring/tag-library/1.4/</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="rb2">
+        <label>2</label>
+        <mixed-citation>
+          <article-title>ANSI/NISO Z39.105-2023, Content Profile/Linked Document | NISO
+            website</article-title>
+          <uri>https://www.niso.org/publications/z39105-2023-cpld</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="rc3">
+        <label>3</label>
+        <mixed-citation>
+          <article-title>JATSKit: framework for conversion of JATS-xml to HTML, PDF and
+            EPUB</article-title>
+          <uri>https://github.com/wendellpiez/JATSKit</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="rd4">
+        <label>4</label>
+        <mixed-citation>
+          <article-title>WHATWG: Web Hypertext Application Technology Working Group</article-title>
+          <uri>https://html.spec.whatwg.org</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="re5">
+        <label>5</label>
+        <mixed-citation>
+          <article-title>XSL Transformations Version 3.0</article-title>
+          <uri>https://www.w3.org/TR/xslt-30/</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="rf6">
+        <label>6</label>
+        <mixed-citation>
+          <article-title>rdflib 7.1.3 documentation</article-title>
+          <uri>https://rdflib.readthedocs.io/</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="rg7">
+        <label>7</label>
+        <mixed-citation>
+          <article-title>Linked Data Glossary (W3C Working Group Note dd 27 June
+            2013)</article-title>
+          <uri>https://www.w3.org/TR/ld-glossary/#internationalized-resource-identifier</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="rh8">
+        <label>8</label>
+        <mixed-citation>
+          <article-title>hashlib — Secure hashes and message digests</article-title>
+          <uri>https://docs.python.org/3/library/hashlib.html</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="ri9">
+        <label>9</label>
+        <mixed-citation>
+          <article-title>VS Code Extension for Content Profiles/Linked Documents
+            (CP/LD)</article-title>
+          <uri>https://marketplace.visualstudio.com/items?itemName=Elsevier.cpld-viewer</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="rja">
+        <label>10</label>
+        <mixed-citation>
+          <article-title>CP/LD-JATS transformations by Elsevier Labs (Open Source)</article-title>
+          <uri>https://github.com/elsevierlabs-os/cpld-jats-transformations</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="rkb">
+        <label>11</label>
+        <mixed-citation>
+          <article-title>Best Practices for Fragment Identifiers and Media Type Definitions</article-title>
+          <uri>https://www.w3.org/TR/fragid-best-practices/</uri>
+        </mixed-citation>
+      </ref>
+      <ref id="rlc">
+        <label>12</label>
+        <mixed-citation>
+          <article-title>JATS Standing Committee</article-title>
+          <uri>https://www.niso.org/standards-committees/jats</uri>
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
