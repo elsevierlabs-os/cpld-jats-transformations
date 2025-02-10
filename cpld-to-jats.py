@@ -8,7 +8,7 @@ from cpld2jats import convert
 @click.option('--destination', default="jats", help='The destination path for the JATS output files, defaulting to `jats` ')
 @click.option('--relative/--absolute', default=True, help='Create the destination path relative to each source file (default) or create it as is.')
 @click.option('--overwrite/--skip-existing', default=False, help='Skip existing files (default) or overwrite files without asking.')
-def cli_convert(paths, destination, relative, embed, overwrite):
+def cli_convert(paths, destination, relative, overwrite):
     """cpld-to-jats.py PATHS
     
     Convert al files in PATHS from CP/LD to JATS XML,
